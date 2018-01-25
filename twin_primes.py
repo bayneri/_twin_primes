@@ -1,5 +1,4 @@
-import json
-import tweepy, time, sys
+import tweepy
 
 def parse_primes(file):
     file = open(file, "r")
@@ -17,7 +16,7 @@ def parse_primes(file):
     
     return ','.join(data)
 
-twin_primes = parse_primes("twin_primes.txt")
+data = parse_primes("twin_primes.txt")
 
 CONSUMER_KEY = '***'
 CONSUMER_SECRET = '***'
@@ -26,8 +25,6 @@ ACCESS_TOKEN_SECRET = '***'
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
-
-data = twin_primes.split(',')
 
 last_tweet = api.user_timeline(screen_name = '_twin_primes',count=1)[0].text
 last_posted_elem = last_tweet.split(',')[0]
