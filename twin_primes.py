@@ -33,4 +33,4 @@ last_tweet = api.user_timeline(screen_name = '_twin_primes',count=1)[0].text
 last_posted_elem = last_tweet.split(',')[0]
 next_index = data.index(last_posted_elem) + 1
 twit = data[next_index] + ', ' + str(int(data[next_index]) + 2)
-api.update_status(twin)
+api.update_status(twit)
